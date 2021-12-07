@@ -3,4 +3,4 @@ project(TPDEVAPP C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(TPDEVAPP main.c)
+add_executable(TPDEVAPP main.c arbre_binaire.c arbre_binaire.h films.c films.h)
