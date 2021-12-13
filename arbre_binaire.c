@@ -5,42 +5,58 @@
 
 #include "arbre_binaire.h"
 
-ArbreBinaire *inserer_film(ArbreBinaire *arbre, Films *film) {
-	if (arbre == NULL) {
-		arbre = malloc(sizeof(ArbreBinaire));
-		if (arbre != NULL) {
-			arbre->film = film;
-			arbre->droite = NULL;
-			arbre->gauche = NULL;
+/**
+ * Permet d'insérer un film dans l'arbre binaire
+ * @param noeud le noeud de l'arbre a partir duquel on doit inserer le film
+ * @param film le film a inserer
+ * @return le nouveau noeud de l'arbre
+ */
+Noeud *inserer_film(Noeud *noeud, Film film) {
+	if (noeud == NULL) {
+		noeud = malloc(sizeof(Noeud));
+		if (noeud != NULL) {
+			noeud->film = film;
+			noeud->droite = NULL;
+			noeud->gauche = NULL;
 		}
 	} else {
-		if (arbre->film->id > film->id) {
-			arbre->gauche = inserer_film(arbre->gauche, film);
+		if (noeud->film.id > film.id) {
+			noeud->gauche = inserer_film(noeud->gauche, film);
 		} else {
-			arbre->droite = inserer_film(arbre->droite, film);
+			noeud->droite = inserer_film(noeud->droite, film);
 		}
 	}
-	return arbre;
+	return noeud;
 }
 
-int rechercher(ArbreBinaire *arbre, int id) {
-	if (arbre == NULL) {
+/**
+ * Permet de rechercher un film dans l'arbre binaire
+ * @param noeud le noeud de l'arbre a partir duquel on doit rechercher le film
+ * @param id l'id du film a rechercher
+ * @return 1 si le film est trouve, 0 sinon
+ */
+int rechercher(Noeud *noeud, int id) {
+	if (noeud == NULL) {
 		return 0;
 	} else {
-		if (arbre->film->id == id) {
+		if (noeud->film.id == id) {
 			return 1;
-		} else if (arbre->film->id > id) {
-			return rechercher(arbre->gauche, id);
+		} else if (noeud->film.id > id) {
+			return rechercher(noeud->gauche, id);
 		} else {
-			return rechercher(arbre->droite, id);
+			return rechercher(noeud->droite, id);
 		}
 	}
 }
 
-void afficher_arbre(ArbreBinaire *arbre) {
-	if (arbre != NULL) {
-		afficher_arbre(arbre->gauche);
-		afficher_film(arbre->film);
-		afficher_arbre(arbre->droite);
+/**
+ * Permet d'afficher l'arbre binaire
+ * @param noeud le noeud de l'arbre a afficher
+ */
+void afficher_arbre(Noeud *noeud) {
+	if (noeud != NULL) {
+		afficher_arbre(noeud->gauche);
+		afficher_film(noeud->film);
+		afficher_arbre(noeud->droite);
 	}
 }

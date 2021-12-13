@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct _Films {
+typedef struct Film {
 	int id;
 	char *titre;
 	char *realisateur;
@@ -16,10 +16,31 @@ typedef struct _Films {
 	char *genre;
 	int note;
 	int annee;
-} Films;
+} Film;
 
-Films *creer_films(int id, char *titre, char *realisateur, char *acteurs, char *genre, int note, int annee);
-Films *saisir_film();
-void afficher_film(Films *film);
+/**
+ * Permet de créer un film
+ * @param id Identifiant du film
+ * @param titre Titre du film
+ * @param realisateur Nom du réalisateur
+ * @param acteurs Nom des acteurs
+ * @param genre Genre du film
+ * @param note Note du film
+ * @param annee Année de sortie du film
+ * @return Le film créé
+ */
+Film creer_films(int id, char *titre, char *realisateur, char *acteurs, char *genre, int note, int annee);
+
+/**
+ * Permet de saisir un film à partir de la console
+ * @return Le film saisi
+ */
+Film saisir_film();
+
+/**
+ * Permet d'afficher un film
+ * @param film Le film à afficher
+ */
+void afficher_film(Film film);
 
 #endif //TPDEVAPP_FILMS_H
