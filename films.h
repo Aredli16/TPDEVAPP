@@ -43,4 +43,10 @@ Film saisir_film();
  */
 void afficher_film(Film film);
 
+/**
+ * Permet de libérer la mémoire d'un film
+ * @param film Le film à libérer
+ */
+void liberer_film(Film film);
+
 #endif //TPDEVAPP_FILMS_H

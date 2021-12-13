@@ -69,3 +69,10 @@ void afficher_film(Film film) {
 	printf("Note : %d\n", film.note);
 	printf("Annee : %d\n", film.annee);
 }
+
+void liberer_film(Film film) {
+	free(film.titre);
+	free(film.realisateur);
+	free(film.acteurs);
+	free(film.genre);
+}

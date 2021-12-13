@@ -1,4 +1,3 @@
-
 //
 // Created by corentin on 07/12/2021.
 //
@@ -58,5 +57,18 @@ void afficher_arbre(Noeud *noeud) {
 		afficher_arbre(noeud->gauche);
 		afficher_film(noeud->film);
 		afficher_arbre(noeud->droite);
+	}
+}
+
+/**
+ * Permet de liberer l'espace memoire alloue pour l'arbre binaire
+ * @param noeud le noeud de l'arbre a liberer
+ */
+void liberer_arbre(Noeud *noeud) {
+	if (noeud != NULL) {
+		liberer_arbre(noeud->gauche);
+		liberer_arbre(noeud->droite);
+		liberer_film(noeud->film);
+		free(noeud);
 	}
 }

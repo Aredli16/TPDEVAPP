@@ -37,4 +37,10 @@ int rechercher(Noeud *noeud, int id);
  */
 void afficher_arbre(Noeud *noeud);
 
+/**
+ * Permet de liberer l'espace memoire alloue pour l'arbre binaire
+ * @param noeud le noeud de l'arbre a liberer
+ */
+void liberer_arbre(Noeud *noeud);
+
 #endif //TPDEVAPP_ARBRE_BINAIRE_H
