@@ -10,22 +10,21 @@
  * @param film le film a inserer
  * @return le nouveau noeud de l'arbre
  */
-Noeud *inserer_film(Noeud *noeud, Film film) {
-	if (noeud == NULL) {
-		noeud = malloc(sizeof(Noeud));
-		if (noeud != NULL) {
-			noeud->film = film;
-			noeud->droite = NULL;
-			noeud->gauche = NULL;
+void inserer_film(Noeud **noeud, Film film) {
+	if (*noeud == NULL) {
+		*noeud = malloc(sizeof(Noeud));
+		if (*noeud != NULL) {
+			(*noeud)->film = film;
+			(*noeud)->droite = NULL;
+			(*noeud)->gauche = NULL;
 		}
 	} else {
-		if (noeud->film.id > film.id) {
-			noeud->gauche = inserer_film(noeud->gauche, film);
+		if ((*noeud)->film.id > film.id) {
+			inserer_film(&(*noeud)->gauche, film);
 		} else {
-			noeud->droite = inserer_film(noeud->droite, film);
+			inserer_film(&(*noeud)->droite, film);
 		}
 	}
-	return noeud;
 }
 
 /**

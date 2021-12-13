@@ -21,7 +21,7 @@ typedef struct Noeud {
  * @param film le film a inserer
  * @return le nouveau noeud de l'arbre
  */
-Noeud *inserer_film(Noeud *noeud, Film film);
+void inserer_film(Noeud **noeud, Film film);
 
 /**
  * Permet de rechercher un film dans l'arbre binaire
