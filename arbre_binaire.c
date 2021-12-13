@@ -84,3 +84,20 @@ void enregistrer_arbre(Noeud *noeud, FILE *fichier) {
 		enregistrer_arbre(noeud->droite, fichier);
 	}
 }
+
+/**
+ * Permet de charger un arbre binaire depuis un fichier CSV
+ * @param fichier le fichier depuis lequel on doit charger l'arbre
+ * @return le noeud de l'arbre
+ */
+Noeud *charger_arbre(FILE *fichier) {
+	Noeud *noeud = NULL;
+	Film film;
+	if (fichier != NULL) {
+		while (!feof(fichier)) {
+			film = charger_film(fichier);
+			inserer_film(&noeud, film);
+		}
+	}
+	return noeud;
+}

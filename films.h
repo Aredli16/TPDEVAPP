@@ -55,4 +55,11 @@ void liberer_film(Film film);
  */
 void enregistrer_film(Film film, FILE *fichier);
 
+/**
+ * Permet de charger un film à partir d'un fichier CSV
+ * @param fichier Le fichier CSV
+ * @return Le film chargé
+ */
+Film charger_film(FILE *fichier);
+
 #endif //TPDEVAPP_FILMS_H

@@ -4,6 +4,8 @@
 
 #include "films.h"
 
+#include <string.h>
+
 /**
  * Permet de créer un film
  * @param id Identifiant du film
@@ -88,4 +90,37 @@ void liberer_film(Film film) {
 void enregistrer_film(Film film, FILE *fichier) {
 	fprintf(fichier, "%d;%s;%s;%s;%s;%d;%d\n", film.id, film.titre, film.realisateur, film.acteurs, film.genre,
 	        film.note, film.annee);
+}
+
+/**
+ * Permet de charger un film à partir d'un fichier CSV
+ * @param fichier Le fichier CSV
+ * @return Le film chargé
+ */
+Film charger_film(FILE *fichier) {
+	int id;
+	char *titre = malloc(sizeof(char) * 100);
+	char *realisateur = malloc(sizeof(char) * 100);
+	char *acteurs = malloc(sizeof(char) * 100);
+	char *genre = malloc(sizeof(char) * 100);
+	int note;
+	int annee;
+	char *ligne = malloc(sizeof(char) * 100);
+	fgets(ligne, 100, fichier);
+	char *token = strtok(ligne, ";");
+	id = atoi(token);
+	token = strtok(NULL, ";");
+	strcpy(titre, token);
+	token = strtok(NULL, ";");
+	strcpy(realisateur, token);
+	token = strtok(NULL, ";");
+	strcpy(acteurs, token);
+	token = strtok(NULL, ";");
+	strcpy(genre, token);
+	token = strtok(NULL, ";");
+	note = atoi(token);
+	token = strtok(NULL, ";");
+	annee = atoi(token);
+	free(ligne);
+	return creer_films(id, titre, realisateur, acteurs, genre, note, annee);
 }

@@ -50,4 +50,11 @@ void liberer_arbre(Noeud *noeud);
  */
 void enregistrer_arbre(Noeud *noeud, FILE *fichier);
 
+/**
+ * Permet de charger un arbre binaire depuis un fichier CSV
+ * @param fichier le fichier depuis lequel on doit charger l'arbre
+ * @return le noeud de l'arbre
+ */
+Noeud *charger_arbre(FILE *fichier);
+
 #endif //TPDEVAPP_ARBRE_BINAIRE_H
