@@ -72,3 +72,16 @@ void liberer_arbre(Noeud *noeud) {
 		free(noeud);
 	}
 }
+
+/**
+ * Permet d'enregistrer l'arbre binaire dans un fichier CSV
+ * @param noeud Noeud a partir duquel on doit enregistrer l'arbre
+ * @param fichier le fichier dans lequel on doit enregistrer l'arbre
+ */
+void enregistrer_arbre(Noeud *noeud, FILE *fichier) {
+	if (noeud != NULL) {
+		enregistrer_arbre(noeud->gauche, fichier);
+		enregistrer_film(noeud->film, fichier);
+		enregistrer_arbre(noeud->droite, fichier);
+	}
+}

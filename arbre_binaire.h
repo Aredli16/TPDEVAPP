@@ -43,4 +43,11 @@ void afficher_arbre(Noeud *noeud);
  */
 void liberer_arbre(Noeud *noeud);
 
+/**
+ * Permet d'enregistrer l'arbre binaire dans un fichier CSV
+ * @param noeud Noeud a partir duquel on doit enregistrer l'arbre
+ * @param fichier le fichier dans lequel on doit enregistrer l'arbre
+ */
+void enregistrer_arbre(Noeud *noeud, FILE *fichier);
+
 #endif //TPDEVAPP_ARBRE_BINAIRE_H

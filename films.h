@@ -49,4 +49,10 @@ void afficher_film(Film film);
  */
 void liberer_film(Film film);
 
+/**
+ * Permet de sauvegarder un film dans un fichier CSV
+ * @param film Le film à sauvegarder
+ */
+void enregistrer_film(Film film, FILE *fichier);
+
 #endif //TPDEVAPP_FILMS_H

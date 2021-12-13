@@ -70,9 +70,22 @@ void afficher_film(Film film) {
 	printf("Annee : %d\n", film.annee);
 }
 
+/**
+ * Permet de libérer la mémoire d'un film
+ * @param film Le film à libérer
+ */
 void liberer_film(Film film) {
 	free(film.titre);
 	free(film.realisateur);
 	free(film.acteurs);
 	free(film.genre);
+}
+
+/**
+ * Permet de sauvegarder un film dans un fichier CSV
+ * @param film Le film à sauvegarder
+ */
+void enregistrer_film(Film film, FILE *fichier) {
+	fprintf(fichier, "%d;%s;%s;%s;%s;%d;%d\n", film.id, film.titre, film.realisateur, film.acteurs, film.genre,
+	        film.note, film.annee);
 }
