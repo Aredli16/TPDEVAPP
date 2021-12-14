@@ -13,7 +13,8 @@ void afficher_menu_utilisateur() {
 	printf("1- Ajouter un film\n");
 	printf("2- Rechercher un film\n");
 	printf("3- Afficher les films\n");
-	printf("4- Quitter\n");
+	printf("4- Supprimer un film\n");
+	printf("5- Quitter\n");
 }
 
 void afficher_menu_recherche() {
@@ -53,8 +54,6 @@ int traiter_choix_utilisateur(int choix, ArbreBinaire **arbre) {
 					rechercher_film_par_titre(*arbre, titre_recherche) ? afficher_film(
 							*rechercher_film_par_titre(*arbre, titre_recherche)) : printf("Film non trouvé\n");
 					break;
-				case 4:
-					return 1;
 				default:
 					printf("Choix invalide\n");
 					break;
@@ -66,6 +65,11 @@ int traiter_choix_utilisateur(int choix, ArbreBinaire **arbre) {
 			printf("--------------------\n");
 			return 1;
 		case 4:
+			printf("Entre l'identifiant du film a supprimer : ");
+			scanf("%d", &choix);
+			supprimer_film_par_id(&(*arbre), choix);
+			return 1;
+		case 5:
 			return 0;
 		default:
 			printf("Choix invalide\n");

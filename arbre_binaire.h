@@ -46,6 +46,13 @@ Film *rechercher_film_par_titre(Noeud *noeud, char *titre);
 void afficher_arbre(Noeud *noeud);
 
 /**
+ * Permet de supprimer un film dans l'arbre binaire
+ * @param noeud le noeud de l'arbre a partir duquel on doit supprimer le film
+ * @param id l'id du film a supprimer
+ */
+void supprimer_film_par_id(Noeud **noeud, int id);
+
+/**
  * Permet de liberer l'espace memoire alloue pour l'arbre binaire
  * @param noeud le noeud de l'arbre a liberer
  */

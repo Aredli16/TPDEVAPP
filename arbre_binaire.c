@@ -80,6 +80,42 @@ void afficher_arbre(Noeud *noeud) {
 }
 
 /**
+ * Permet de supprimer un film dans l'arbre binaire
+ * @param noeud le noeud de l'arbre a partir duquel on doit supprimer le film
+ * @param id l'id du film a supprimer
+ */
+void supprimer_film_par_id(Noeud **noeud, int id) {
+	if (*noeud != NULL) {
+		if ((*noeud)->film.id == id) {
+			if ((*noeud)->gauche == NULL && (*noeud)->droite == NULL) {
+				free(*noeud);
+				*noeud = NULL;
+			} else if ((*noeud)->gauche == NULL) {
+				Noeud *tmp = *noeud;
+				*noeud = (*noeud)->droite;
+				free(tmp);
+			} else if ((*noeud)->droite == NULL) {
+				Noeud *tmp = *noeud;
+				*noeud = (*noeud)->gauche;
+				free(tmp);
+			} else {
+				Noeud *tmp = *noeud;
+				*noeud = (*noeud)->gauche;
+				supprimer_film_par_id(&(*noeud)->droite, id);
+				tmp->gauche = (*noeud)->gauche;
+				tmp->droite = (*noeud)->droite;
+				free(*noeud);
+				*noeud = tmp;
+			}
+		} else if ((*noeud)->film.id > id) {
+			supprimer_film_par_id(&(*noeud)->gauche, id);
+		} else {
+			supprimer_film_par_id(&(*noeud)->droite, id);
+		}
+	}
+}
+
+/**
  * Permet de liberer l'espace memoire alloue pour l'arbre binaire
  * @param noeud le noeud de l'arbre a liberer
  */
