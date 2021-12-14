@@ -63,7 +63,7 @@ Film saisir_film() {
  * @param film Le film à afficher
  */
 void afficher_film(Film film) {
-	printf("\nId : %d\n", film.id);
+	printf("Id : %d\n", film.id);
 	printf("Titre : %s\n", film.titre);
 	printf("Realisateur : %s\n", film.realisateur);
 	printf("Acteurs : %s\n", film.acteurs);

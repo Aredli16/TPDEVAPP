@@ -27,9 +27,17 @@ void inserer_film(Noeud **noeud, Film film);
  * Permet de rechercher un film dans l'arbre binaire
  * @param noeud le noeud de l'arbre a partir duquel on doit rechercher le film
  * @param id l'id du film a rechercher
- * @return 1 si le film est trouve, 0 sinon
+ * @return Film le film rechercher, NULL sinon
  */
-int rechercher(Noeud *noeud, int id);
+Film *rechercher_par_id(Noeud *noeud, int id);
+
+/**
+ * Permet de rechercher un film par son titre dans l'arbre binaire
+ * @param noeud le noeud de l'arbre a partir duquel on doit rechercher le film
+ * @param titre le titre du film a rechercher
+ * @return Film le film trouve, NULL sinon
+ */
+Film *rechercher_film_par_titre(Noeud *noeud, char *titre);
 
 /**
  * Permet d'afficher l'arbre binaire

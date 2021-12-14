@@ -31,20 +31,40 @@ void inserer_film(Noeud **noeud, Film film) {
  * Permet de rechercher un film dans l'arbre binaire
  * @param noeud le noeud de l'arbre a partir duquel on doit rechercher le film
  * @param id l'id du film a rechercher
- * @return 1 si le film est trouve, 0 sinon
+ * @return Film le film rechercher, NULL sinon
  */
-int rechercher(Noeud *noeud, int id) {
+Film *rechercher_par_id(Noeud *noeud, int id) {
 	if (noeud == NULL) {
 		return 0;
 	} else {
 		if (noeud->film.id == id) {
-			return 1;
+			return &noeud->film;
 		} else if (noeud->film.id > id) {
-			return rechercher(noeud->gauche, id);
+			return rechercher_par_id(noeud->gauche, id);
 		} else {
-			return rechercher(noeud->droite, id);
+			return rechercher_par_id(noeud->droite, id);
 		}
 	}
+}
+
+/**
+ * Permet de rechercher un film par son titre dans l'arbre binaire
+ * @param noeud le noeud de l'arbre a partir duquel on doit rechercher le film
+ * @param titre le titre du film a rechercher
+ * @return Film le film trouve, NULL sinon
+ */
+Film *rechercher_film_par_titre(Noeud *noeud, char *titre) {
+	if (noeud == NULL) {
+		return NULL;
+	} else {
+		if (strcmp(noeud->film.titre, titre) == 0) {
+			return &noeud->film;
+		} else {
+			rechercher_film_par_titre(noeud->gauche, titre);
+			rechercher_film_par_titre(noeud->droite, titre);
+		}
+	}
+
 }
 
 /**
