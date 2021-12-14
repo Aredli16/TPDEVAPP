@@ -43,7 +43,13 @@ Film *rechercher_film_par_titre(Noeud *noeud, char *titre);
  * Permet d'afficher l'arbre binaire
  * @param noeud le noeud de l'arbre a afficher
  */
-void afficher_arbre(Noeud *noeud);
+void afficher_arbre_croissant(Noeud *noeud);
+
+/**
+ * Permet d'afficher l'arbre binaire dans l'ordre décroissant des id
+ * @param noeud le noeud de l'arbre a afficher
+ */
+void afficher_arbre_decroissant(Noeud *noeud);
 
 /**
  * Permet de supprimer un film dans l'arbre binaire

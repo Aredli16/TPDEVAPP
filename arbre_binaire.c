@@ -73,11 +73,23 @@ Film *rechercher_film_par_titre(Noeud *noeud, char *titre) {
  * Permet d'afficher l'arbre binaire
  * @param noeud le noeud de l'arbre a afficher
  */
-void afficher_arbre(Noeud *noeud) {
+void afficher_arbre_croissant(Noeud *noeud) {
 	if (noeud != NULL) {
-		afficher_arbre(noeud->gauche);
+		afficher_arbre_croissant(noeud->gauche);
 		afficher_film(noeud->film);
-		afficher_arbre(noeud->droite);
+		afficher_arbre_croissant(noeud->droite);
+	}
+}
+
+/**
+ * Permet d'afficher l'arbre binaire dans l'ordre décroissant des id
+ * @param noeud le noeud de l'arbre a afficher
+ */
+void afficher_arbre_decroissant(Noeud *noeud) {
+	if (noeud != NULL) {
+		afficher_arbre_decroissant(noeud->droite);
+		afficher_film(noeud->film);
+		afficher_arbre_decroissant(noeud->gauche);
 	}
 }
 

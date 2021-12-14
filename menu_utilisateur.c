@@ -62,9 +62,25 @@ int traiter_choix_utilisateur(int choix, ArbreBinaire **arbre) {
 			}
 			return 1;
 		case 3:
-			printf("--------------------\n--------------------\n--------------------\n");
-			afficher_arbre(*arbre);
-			printf("--------------------\n");
+			printf("1- Croissant\n");
+			printf("2- Décroissant\n");
+			printf("Votre choix : ");
+			scanf("%d", &choix);
+			switch (choix) {
+				case 1:
+					printf("--------------------\n--------------------\n--------------------\n");
+					afficher_arbre_croissant(*arbre);
+					printf("--------------------\n");
+					break;
+				case 2:
+					printf("--------------------\n--------------------\n--------------------\n");
+					afficher_arbre_decroissant(*arbre);
+					printf("--------------------\n");
+					break;
+				default:
+					printf("Choix invalide\n");
+					break;
+			}
 			return 1;
 		case 4:
 			printf("Entre l'identifiant du film a supprimer : ");
