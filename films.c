@@ -70,6 +70,7 @@ void afficher_film(Film film) {
 	printf("Genre : %s\n", film.genre);
 	printf("Note : %d\n", film.note);
 	printf("Annee : %d\n", film.annee);
+	printf("--------------------\n--------------------\n");
 }
 
 /**
@@ -105,22 +106,6 @@ Film charger_film(FILE *fichier) {
 	char *genre = malloc(sizeof(char) * 100);
 	int note;
 	int annee;
-	char *ligne = malloc(sizeof(char) * 100);
-	fgets(ligne, 100, fichier);
-	char *token = strtok(ligne, ";");
-	id = atoi(token);
-	token = strtok(NULL, ";");
-	strcpy(titre, token);
-	token = strtok(NULL, ";");
-	strcpy(realisateur, token);
-	token = strtok(NULL, ";");
-	strcpy(acteurs, token);
-	token = strtok(NULL, ";");
-	strcpy(genre, token);
-	token = strtok(NULL, ";");
-	note = atoi(token);
-	token = strtok(NULL, ";");
-	annee = atoi(token);
-	free(ligne);
+	fscanf(fichier, "%d;%[^;];%[^;];%[^;];%[^;];%d;%d\n", &id, titre, realisateur, acteurs, genre, &note, &annee);
 	return creer_films(id, titre, realisateur, acteurs, genre, note, annee);
 }

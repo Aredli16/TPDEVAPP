@@ -32,7 +32,9 @@ int traiter_choix_utilisateur(int choix, ArbreBinaire **arbre) {
 			rechercher(*arbre, choix) ? printf("Film trouvé\n") : printf("Film non trouvé\n");
 			return 1;
 		case 3:
+			printf("--------------------\n--------------------\n--------------------\n");
 			afficher_arbre(*arbre);
+			printf("--------------------\n");
 			return 1;
 		case 4:
 			return 0;
