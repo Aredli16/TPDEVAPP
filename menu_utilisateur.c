@@ -20,7 +20,7 @@ void afficher_menu_utilisateur() {
 void afficher_menu_recherche() {
 	printf("1- Rechercher par id\n");
 	printf("2- Rechercher par titre\n");
-	printf("4- Retour\n");
+	printf("3- Retour\n");
 }
 
 /**
@@ -54,6 +54,8 @@ int traiter_choix_utilisateur(int choix, ArbreBinaire **arbre) {
 					rechercher_film_par_titre(*arbre, titre_recherche) ? afficher_film(
 							*rechercher_film_par_titre(*arbre, titre_recherche)) : printf("Film non trouvé\n");
 					break;
+				case 3:
+					return 1;
 				default:
 					printf("Choix invalide\n");
 					break;

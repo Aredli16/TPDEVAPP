@@ -18,6 +18,8 @@ void inserer_film(Noeud **noeud, Film film) {
 			(*noeud)->droite = NULL;
 			(*noeud)->gauche = NULL;
 		}
+	} else if (film.id == (*noeud)->film.id) {
+		printf("Le film existe deja dans l'arbre\n");
 	} else {
 		if ((*noeud)->film.id > film.id) {
 			inserer_film(&(*noeud)->gauche, film);
