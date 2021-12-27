@@ -102,17 +102,21 @@ void supprimer_film_par_id(Noeud **noeud, int id) {
 	if (*noeud != NULL) {
 		if ((*noeud)->film.id == id) {
 			if ((*noeud)->gauche == NULL && (*noeud)->droite == NULL) {
+				liberer_film((*noeud)->film);
 				free(*noeud);
 				*noeud = NULL;
 			} else if ((*noeud)->gauche == NULL) {
+				liberer_film((*noeud)->film);
 				Noeud *tmp = *noeud;
 				*noeud = (*noeud)->droite;
 				free(tmp);
 			} else if ((*noeud)->droite == NULL) {
+				liberer_film((*noeud)->film);
 				Noeud *tmp = *noeud;
 				*noeud = (*noeud)->gauche;
 				free(tmp);
 			} else {
+				liberer_film((*noeud)->film);
 				Noeud *tmp = *noeud;
 				*noeud = (*noeud)->gauche;
 				supprimer_film_par_id(&(*noeud)->droite, id);
